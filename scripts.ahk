@@ -1,23 +1,22 @@
 Gosub, %1%
 return
 
+; ----- Media functional buttons block -------
 next:
 Send {Media_Next}
-return
-
-previous:
-Send {Media_Prev 2}
 return
 
 replay:
 Send {Media_Prev}
 return
 
-pause:
-Send {Media_Play_Pause}
+; Generally, to rewind a song it is necessary to use the button twice,
+; because if pressed once, it only returns the song to the beginning
+previous:
+Send {Media_Prev 2}
 return
 
-play:
+play_pause:
 Send {Media_Play_Pause}
 return
 
@@ -36,12 +35,11 @@ return
 mute:
 Send {Volume_Mute}
 return
+; ----- End media functional buttons block --------
 
-changeMonitor:
-run, C:\Windows\System32\DisplaySwitch.exe /external
-return
 
-setPrincipal:
+; ----- Monitor admnistration block --------
+computerScreen:
 run, C:\Windows\System32\DisplaySwitch.exe /internal
 return
 
@@ -52,3 +50,8 @@ return
 extendScreen:
 run, C:\Windows\System32\DisplaySwitch.exe /extend
 return
+
+secondScreen:
+run, C:\Windows\System32\DisplaySwitch.exe /external
+return
+; ----- End Monitor admnistration block --------
